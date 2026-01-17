@@ -3,36 +3,38 @@ package edu.icet.controller;
 import edu.icet.dto.StudentDto;
 import edu.icet.service.StudentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/Student")
 public class StudentController {
 
     final StudentService studentService;
 
-    @GetMapping
+    @GetMapping("/get-all")
     public List<StudentDto> getAll(){
         return studentService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public void addStudent(StudentDto studentDto){
         studentService.addStudent(studentDto);
     }
+
+    @PutMapping("/update")
     public void updateStudent(StudentDto studentDto){
         studentService.updateStudent(studentDto);
     }
 
-    public void deleteStduent(Integer id){
+    @DeleteMapping("/delete-by-id/{id}")
+    public void deleteStudent(Integer id){
         studentService.deleteStudent(id);
     }
-
-    public List<StudentDto> searchByName(String name){
-        return studentService.searchByName(name);
+    @GetMapping("search-by-id/{id}")
+    public StudentDto searchById(Integer id){
+        return studentService.searchById(id);
     }
 }

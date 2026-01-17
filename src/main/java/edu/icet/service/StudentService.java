@@ -13,5 +13,5 @@ public interface StudentService {
 
     List <StudentDto> getAll();
 
-    List <StudentDto> searchByName(String name);
+    public StudentDto searchById(Integer id);
 }
