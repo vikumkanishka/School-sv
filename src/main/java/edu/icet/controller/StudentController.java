@@ -20,21 +20,21 @@ public class StudentController {
     }
 
     @PostMapping("/add")
-    public void addStudent(StudentDto studentDto){
+    public void addStudent(@RequestBody StudentDto studentDto){
         studentService.addStudent(studentDto);
     }
 
     @PutMapping("/update")
-    public void updateStudent(StudentDto studentDto){
+    public void updateStudent(@RequestBody StudentDto studentDto){
         studentService.updateStudent(studentDto);
     }
 
     @DeleteMapping("/delete-by-id/{id}")
-    public void deleteStudent(Integer id){
+    public void deleteStudent(@PathVariable Integer id){
         studentService.deleteStudent(id);
     }
     @GetMapping("search-by-id/{id}")
-    public StudentDto searchById(Integer id){
+    public StudentDto searchById(@PathVariable Integer id){
         return studentService.searchById(id);
     }
 }
